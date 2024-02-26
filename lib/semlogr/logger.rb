@@ -41,23 +41,23 @@ module Semlogr
     end
 
     def debug(template = nil, **properties, &block)
-      log(LogSeverity::DEBUG, template, properties, &block)
+      log(LogSeverity::DEBUG, template, **properties, &block)
     end
 
     def info(template = nil, **properties, &block)
-      log(LogSeverity::INFO, template, properties, &block)
+      log(LogSeverity::INFO, template, **properties, &block)
     end
 
     def warn(template = nil, **properties, &block)
-      log(LogSeverity::WARN, template, properties, &block)
+      log(LogSeverity::WARN, template, **properties, &block)
     end
 
     def error(template = nil, **properties, &block)
-      log(LogSeverity::ERROR, template, properties, &block)
+      log(LogSeverity::ERROR, template, **properties, &block)
     end
 
     def fatal(template = nil, **properties, &block)
-      log(LogSeverity::FATAL, template, properties, &block)
+      log(LogSeverity::FATAL, template, **properties, &block)
     end
 
     def with_context(**properties)
@@ -69,7 +69,7 @@ module Semlogr
 
     private
 
-    def log(severity, template, properties, &block)
+    def log(severity, template, **properties, &block)
       return true if severity < @min_severity
 
       if block
@@ -80,7 +80,7 @@ module Semlogr
         properties[:progname] = progname if progname
       end
 
-      log_event = Events::LogEvent.create(severity, template, properties)
+      log_event = Events::LogEvent.create(severity, template, **properties)
       @sink.emit(log_event)
 
       true

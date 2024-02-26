@@ -41,26 +41,26 @@ module Semlogr
   end
 
   def self.debug(template = nil, **properties, &block)
-    logger.debug(template, properties, &block)
+    logger.debug(template, **properties, &block)
   end
 
   def self.info(template = nil, **properties, &block)
-    logger.info(template, properties, &block)
+    logger.info(template, **properties, &block)
   end
 
   def self.warn(template = nil, **properties, &block)
-    logger.warn(template, properties, &block)
+    logger.warn(template, **properties, &block)
   end
 
   def self.error(template = nil, **properties, &block)
-    logger.error(template, properties, &block)
+    logger.error(template, **properties, &block)
   end
 
   def self.fatal(template = nil, **properties, &block)
-    logger.fatal(template, properties, &block)
+    logger.fatal(template, **properties, &block)
   end
 
   def self.with_context(**properties)
-    logger.with_context(properties)
+    logger.with_context(**properties)
   end
 end

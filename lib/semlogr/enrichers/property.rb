@@ -5,7 +5,7 @@ require 'semlogr/component_registry'
 module Semlogr
   module Enrichers
     class Property
-      def initialize(**properties)
+      def initialize(properties)
         @properties = properties
       end
 

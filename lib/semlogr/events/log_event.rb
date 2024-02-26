@@ -20,10 +20,10 @@ module Semlogr
         @properties = properties
       end
 
-      def self.create(severity, template, properties)
+      def self.create(severity, template, **properties)
         template = Templates::Parser.parse(template)
 
-        LogEvent.new(severity, template, properties)
+        LogEvent.new(severity, template, **properties)
       end
 
       def get_property(name)

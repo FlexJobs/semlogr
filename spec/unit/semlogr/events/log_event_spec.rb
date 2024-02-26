@@ -11,10 +11,10 @@ module Semlogr
       let(:parsed_template) { Templates::Template.new('', []) }
       let(:properties) { { a: 1, b: 2 } }
 
-      subject(:log_event) { LogEvent.new(severity, parsed_template, properties) }
+      subject(:log_event) { LogEvent.new(severity, parsed_template, **properties) }
 
       describe '.create' do
-        subject(:log_event) { LogEvent.create(severity, template, properties) }
+        subject(:log_event) { LogEvent.create(severity, template, **properties) }
 
         before do
           allow(Templates::Parser).to receive(:parse)
